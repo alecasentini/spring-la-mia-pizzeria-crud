@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>La Mia Pizzeria</title>
+</head>
+<body>
+	<h1>Pizze:</h1>
+	<div th:if="${noPizzas}">
+		<p>Non ci sono pizze nel database</p>
+	</div>
+	<ul th:unless="${noPizzas}">
+		<li
+			th:each="pizza : ${pizzas}"
+			th:object="${pizza}"
+		>
+			[[*{nome}]] - [[*{descrizione}]] - [[*{prezzo}]] €
+			<br/>
+			<img th:src="@{*{foto}}" alt="Foto della pizza" width="300"/>
+		</li>
+	</ul>
+</body>
+</html>
