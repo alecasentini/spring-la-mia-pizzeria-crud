@@ -1,5 +1,7 @@
 package org.java.app.db.pojo;
 
+import java.text.DecimalFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -57,8 +59,9 @@ public class Pizza {
 	public void setFoto(String foto) {
 		this.foto = foto;
 	}
-	public double getPrezzo() {
-		return prezzo;
+	public String getPrezzo() {
+	    DecimalFormat df = new DecimalFormat("#.00");
+	    return df.format(prezzo);
 	}
 	public void setPrezzo(double prezzo) {
 		this.prezzo = prezzo;

@@ -1,23 +1,40 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title>La Mia Pizzeria</title>
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}" />
+	<meta charset="ISO-8859-1">
+	<title>La Mia Pizzeria</title>
 </head>
+
 <body>
-	<h1>Pizze:</h1>
-	<div th:if="${noPizzas}">
-		<p>Non ci sono pizze nel database</p>
+	<div class="container">
+
+		<h1 class="py-3">Pizze:</h1>
+		<div class="py-3 text-center" th:if="${noPizzas}">
+			<p>Non ci sono pizze nel database</p>
+		</div>
+		<div>
+			<div class="card-deck d-flex flex-wrap justify-content-between" th:unless="${noPizzas}">
+				<div class="card" style="width: 250px; height: 350px;" th:each="pizza : ${pizzas}" th:object="${pizza}">
+					<div style="height: 150px;">
+						<img class="card-img-top" th:src="@{*{foto}}" th:alt="*{nome}"
+							style="width: 100%; height: 100%;object-fit: cover;" />
+					</div>
+					<div class="card-body" style="height: 200px;">
+						<h5 class="card-title text-center" th:text="*{nome}">Nome della pizza</h5>
+						<p class="card-text" th:text="*{descrizione}">Descrizione della pizza</p>
+						<p class="card-text"><small class="text-muted"><span th:text="*{prezzo}">Prezzo</span> €</small>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
 	</div>
-	<ul th:unless="${noPizzas}">
-		<li
-			th:each="pizza : ${pizzas}"
-			th:object="${pizza}"
-		>
-			[[*{nome}]] - [[*{descrizione}]] - [[*{prezzo}]] €
-			<br/>
-			<img th:src="@{*{foto}}" alt="Foto della pizza" width="300"/>
-		</li>
-	</ul>
+
+	<script th:src="@{/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js}"></script>
+
 </body>
+
 </html>
