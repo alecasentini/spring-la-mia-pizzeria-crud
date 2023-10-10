@@ -28,6 +28,9 @@ public class PizzaService {
 	public List<Pizza> findByNomeContaining(String nome) {
 	    return pizzaRepo.findByNomeContaining(nome);
 	}
+	public void deleteById(int id) {
+	    pizzaRepo.deleteById(id);
+	}
 
 }
 
