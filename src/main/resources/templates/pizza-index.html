@@ -40,6 +40,7 @@
 						<p class="card-text"><small class="text-muted"><span th:text="*{prezzo}">Prezzo</span> €</small>
 						</p>
 						<a th:href="@{/pizzas/{id}(id=*{id})}" class="btn btn-primary">Dettagli</a>
+						<a th:href="@{/pizzas/{id}/edit(id=${pizza.id})}" class="btn btn-primary">Modifica</a>
 					</div>
 				</div>
 			</div>
